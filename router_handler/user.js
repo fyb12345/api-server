@@ -6,10 +6,6 @@ const config = require('../config/index');
 exports.regUser = (req, res) => {
     const body = req.body;
 
-    if (!body.username || !body.password) {
-        return res.cc('用户名或密码不能为空！');
-    }
-
     const sql = 'SELECT * FROM  ev_users WHERE username=?';
     const addUserSql = 'INSERT into ev_users set ?';
     // 查找有没有该用户

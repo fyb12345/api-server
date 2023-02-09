@@ -6,8 +6,9 @@ const exparessJwt = require('express-jwt');
 const app=express();
 
 // 路由
-const routerUser=require('./router/user');
-
+const user_router=require('./router/user');
+const userInfo_router=require('./router/userinfo')
+const artCate_router = require('./router/artcate')
 
 
 
@@ -38,7 +39,9 @@ app.use(exparessJwt({secret:config.JwtSecretKey}).unless({path:[/^\/api\//]}))
 
 
 
-app.use('/api',routerUser);
+app.use('/api',user_router);
+app.use('/my',userInfo_router);
+app.use('/my/article', artCate_router)
 
 
 
