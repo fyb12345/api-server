@@ -44,7 +44,7 @@ exports.addArticleCate = function (req, res) {
 exports.deleteArticleCate = function(req,res){
     const body = req.body;
     const sql='UPDATE ev_article_cate SET is_delete=1 WHERE id = ?';
-    db.query(sql, [req.user.id], (err, result) => {
+    db.query(sql, [body.id], (err, result) => {
         if (err) throw err;
 
         if (result.affectedRows !== 1) return res.cc('删除失败!')
@@ -59,7 +59,6 @@ exports.deleteArticleCate = function(req,res){
 
 // 根据 Id 获取文章分类
 exports.getIdArticleCate=function (req,res){
-    const body = req.body;
     const sql = 'SELECT id,name,alias,is_delete FROM ev_article_cate WHERE id=?'
     db.query(sql,[req.params.id], (err, result) => {
         if (err) throw err;
