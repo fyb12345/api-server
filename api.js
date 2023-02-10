@@ -9,8 +9,11 @@ const app=express();
 const user_router=require('./router/user');
 const userInfo_router=require('./router/userinfo')
 const artCate_router = require('./router/artcate')
+const article_router = require('./router/article')
 
 
+// 托管静态资源文件
+app.use('/uploads', express.static('./uploads'))
 
 // 跨域
 app.use(cors());
@@ -42,6 +45,7 @@ app.use(exparessJwt({secret:config.JwtSecretKey}).unless({path:[/^\/api\//]}))
 app.use('/api',user_router);
 app.use('/my',userInfo_router);
 app.use('/my/article', artCate_router)
+app.use('/my/article', article_router)
 
 
 
@@ -53,6 +57,8 @@ app.use(function(err,req, res, next) {
 
   res.cc(err);
 })
+
+
 
 app.listen(8081,(err) =>{
   if (err) throw err;
