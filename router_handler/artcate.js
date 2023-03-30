@@ -35,7 +35,7 @@ exports.addArticleCate = function (req, res) {
             if (result.affectedRows !== 1) return res.cc('新增文章分类失败！')
             console.log(result)
             // 新增文章分类成功
-            res.cc('新增文章分类成功！', 0)
+            res.cc('新增文章分类成功！', 200, 0)
         })
     })
 }
@@ -50,7 +50,7 @@ exports.deleteArticleCate = function(req,res){
         if (result.affectedRows !== 1) return res.cc('删除失败!')
 
 
-        res.cc('删除成功!',0);
+        res.cc('删除成功!',200, 0);
 
     })
 }
@@ -95,7 +95,7 @@ exports.updateArticleCate=function (req,res){
 
             if (result.affectedRows !== 1) return res.cc('删除失败!')
 
-            res.cc('更新成功!',0);
+            res.cc('更新成功!',200, 0);
 
         })
     })

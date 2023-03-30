@@ -26,8 +26,8 @@ app.use(express.json());
 // 自定义中间件
 // 发布处理失败消息
 app.use((req, res, next) => {
-  res.cc =function (err, status = 1)  {
-    res.send({
+  res.cc =function (err,code=500, status = 1)  {
+    res.status(code).send({
       status, message: err instanceof Error ? err.message : err
     })
   }
@@ -53,7 +53,7 @@ app.use('/my/article', article_router)
 app.use(function(err,req, res, next) {
   if (err instanceof joi.ValidationError) return res.cc(err);
 
-  if (err.name === 'UnauthorizedError') return res.cc('身份认证失败！')
+  if (err.name === 'UnauthorizedError') return res.cc('身份认证失败！',401)
 
   res.cc(err);
 })

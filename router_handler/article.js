@@ -59,7 +59,7 @@ exports.addArticle=function(req,res){
         if (result.affectedRows !== 1) return res.cc('发布文章失败！')
 
         // 发布文章成功
-        res.cc('发布文章成功', 0)
+        res.cc('发布文章成功', 200, 0)
     })
 }
 
@@ -73,7 +73,7 @@ exports.deleteArticle=function(req,res){
 
         if (1!==result.affectedRows) res.cc('删除失败');
 
-        res.cc('删除成功',0)
+        res.cc('删除成功',200, 0)
     })
 }
 
@@ -96,6 +96,6 @@ exports.updateArticle=function(req,res){
 
         if (1!==result.affectedRows) res.cc('更新失败');
 
-        res.cc('更新成功',0)
+        res.cc('更新成功',200, 0)
     })
 }

@@ -25,7 +25,7 @@ exports.updateUserInfo = function (req, res) {
         if (1 !== result.affectedRows) {
             return res.cc('用户信息更新失败，请稍后再试！');
         }
-        res.cc('更新成功!', 0)
+        res.cc('更新成功!',200, 0)
     })
 }
 
@@ -54,7 +54,7 @@ exports.updatePassword = function (req, res) {
         db.query(sql, [newPass, req.user.id], (err, result) => {
             if (err) throw err;
             if (1 !== result.affectedRows) return res.cc('用户密码更新失败，请稍后再试！')
-            res.cc('更新成功!')
+            res.cc('更新成功!',200,0)
         })
     })
 
@@ -74,6 +74,6 @@ exports.updateUserPic=function (req, res) {
 
         if (1!==result.affectedRows) return res.cc('更新失败!')
 
-        res.cc('更新成功',0)
+        res.cc('更新成功',200,0)
     })
 }
